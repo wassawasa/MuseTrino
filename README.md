@@ -16,7 +16,7 @@ MuseScore Studio 4 の再生に、NEUTRINO の歌声を同期させる**非公�
 
 - Windows 10 / 11（64bit）
 - [MuseScore Studio](https://musescore.org/) 4.7 以降（4.7.7 で動作を確認しています）
-- [NEUTRINO](https://studio-neutrino.com/) 標準版（Tau v3.2 以降）か、NEUTRINO 調声支援ツール同梱版の NEUTRINO と、歌声ライブラリ
+- [NEUTRINO](https://studio-neutrino.com/) 標準版（Tau v3.2 以降）と歌声ライブラリ
 
 Node.js などのほかのソフトは要りません。
 
@@ -30,9 +30,9 @@ Node.js などのほかのソフトは要りません。
 4. MuseTrino を初めて読み込むと、MuseScore 用のプラグイン（`MuseTrino.qml`）が `ドキュメント\MuseScore4\Plugins\MuseTrino` に入ります。MuseScore を一度起動し直し、「プラグイン」→「プラグインを管理」で MuseTrino を有効にします
 5. 「プラグイン」メニューから MuseTrino を開き、小さなウィンドウを開いたままにします（パートがいくつあっても 1 つだけ）
 
-NEUTRINO は `C:\NEUTRINO` などから自動で探します。見つからないときは、MuseTrino の画面（ミキサーの音源の歯車）で NEUTRINO のフォルダを選んでください。
+NEUTRINO は `C:\NEUTRINO` などから自動で探します。見つからないときは、MuseTrino の画面（ミキサーの音源の歯車）で NEUTRINO 標準版のフォルダを選んでください。
 
-`MuseTrino.vst3` の中には、歌声を作るサービス（`musetrino-service.exe`）も入っています。フォルダの中身は分けずにコピーしてください。
+`MuseTrino.vst3` の中には、歌声を作るサービス（`musetrino-service.exe` と `neutrilizer-infer.exe`）も入っています。フォルダの中身は分けずにコピーしてください。
 
 - **更新:** MuseScore を終了して 30 秒ほど待ってから、新しい `MuseTrino.vst3` で上書きします
 - **削除:** MuseScore を終了して `MuseTrino.vst3` を消します（MuseScore 用プラグインと `%LOCALAPPDATA%\MuseTrino` も、不要なら消してください）
@@ -46,7 +46,8 @@ NEUTRINO は `C:\NEUTRINO` などから自動で探します。見つからな�
 - パートの自動判定、パートごとの声・サポートモデル・スタイル・移調
 - 反復の 2 番以降の歌詞、スウィング、強弱記号による音量、ブレス記号での息継ぎ
 - 英字のスキャット（woo・doo・bap など）やローマ字の歌詞を仮名にして歌う、「く’ら」の母音の無声化
-- NEUTRINO 調声支援ツール同梱版の常駐サーバーでの高速な生成
+- 内蔵の高速エンジン: NEUTRINO 標準版の ONNX Runtime と歌声ライブラリを読み込んだまま使い、フレーズごとの待ち時間なしで歌声を作る（計算は標準版と同じ。Neutrilizer と同じもの）
+- 歌詞のないパートは、すべての音符を「ら」で歌う
 - [Neutrilizer](https://github.com/wassawasa/Neutrilizer) のプロジェクト（.ntlz）への書き出し（パートごと）
 
 ## 利用上の注意
